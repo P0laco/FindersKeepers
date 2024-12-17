@@ -2,21 +2,22 @@ package io.codeforall.fanstatics.Models;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "planned_activities")
-public class PlannedActivities {
+public class PlannedActivities implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user; // This is the user associated with this planned activity
-    // OneToMany relationship: One planned activity can have many users
-    @OneToMany(mappedBy = "plannedActivities")
+    @ManyToMany
+    @JoinTable(
+            name = "activity_participants",
+            joinColumns = @JoinColumn(name = "planned_activity_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> users;
 
     // Other fields

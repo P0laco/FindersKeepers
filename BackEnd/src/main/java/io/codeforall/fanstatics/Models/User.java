@@ -3,11 +3,12 @@ package io.codeforall.fanstatics.Models;
 import io.codeforall.fanstatics.Models.PlannedActivities;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,22 +29,12 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    // This is ManyToOne, as a user belongs to one planned activity
-    @ManyToOne
-    @JoinColumn(name = "planned_activity_id")  // Foreign key column
-    private PlannedActivities plannedActivities;
-
-    // OneToMany to indicate that this user can have many activities (activity participants)
-    @OneToMany(mappedBy = "user")
-    private Set<ActivityParticipants> activityParticipants;
-
-    public Set<ActivityParticipants> getActivityParticipants() {
-        return activityParticipants;
-    }
-
-    public void setActivityParticipants(Set<ActivityParticipants> activityParticipants) {
-        this.activityParticipants = activityParticipants;
-    }
+    @ManyToMany
+    @JoinTable(
+            name = "activity_participants",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "planned_activity_id"))
+    private Set<PlannedActivities> plannedActivities;
 
     // Getters and Setters
     public Integer getId() {
@@ -94,11 +85,11 @@ public class User {
         this.password = password;
     }
 
-    public PlannedActivities getPlannedActivities() {
+    public Set<PlannedActivities> getPlannedActivities() {
         return plannedActivities;
     }
 
-    public void setPlannedActivities(PlannedActivities plannedActivities) {
+    public void setPlannedActivities(Set<PlannedActivities> plannedActivities) {
         this.plannedActivities = plannedActivities;
     }
 }

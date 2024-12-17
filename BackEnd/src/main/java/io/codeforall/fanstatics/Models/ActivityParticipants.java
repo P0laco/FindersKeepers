@@ -1,8 +1,6 @@
 package io.codeforall.fanstatics.Models;
 
 import jakarta.persistence.*;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "activity_participants")
@@ -12,11 +10,9 @@ public class ActivityParticipants {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
     @JoinColumn(name = "planned_activity_id", referencedColumnName = "id")
     private PlannedActivities plannedActivities;  // Foreign key to PlannedActivities
 
-    @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;  // Foreign key to User
 

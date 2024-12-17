@@ -13,6 +13,7 @@ INSERT INTO activity (name, description) VALUES
 ('Corrida', 'Correr'),
 ('Passeio', 'Passear');
 
+/*
 DELETE FROM planned_activities;
 
 INSERT INTO planned_activities ( activity_id, number_of_people, date, time, location) VALUES
@@ -29,9 +30,9 @@ INSERT INTO planned_activities ( activity_id, number_of_people, date, time, loca
 ( 2, 3, '2022-03-01', '10:00', 'gaia'),
 ( 3, 3, '2022-03-01', '10:00', 'gaia');
 
--- DELETE FROM activity_participants;
+DELETE FROM activity_participants;
 
-INSERT INTO activity_participants (users, planned_activity_id) VALUES
+INSERT INTO activity_participants (user_id, planned_activity_id) VALUES
 (2, 1),
 (3, 2),
 (4, 3),
@@ -44,4 +45,6 @@ INSERT INTO activity_participants (users, planned_activity_id) VALUES
 (1, 10),
 (2, 11),
 (3, 12);
+
+ */
 
