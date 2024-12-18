@@ -1,3 +1,140 @@
-body{
-    background-color: grey;
+/* Reset de Estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Container principal */
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* background: linear-gradient(to left, #2d0202, #450a0a); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Imagem de fundo corrigida */
+.background {
+    background: url('./images/active-buddies.jpg') no-repeat center center/cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    opacity: 0.9;
+}
+
+/* Overlay para escurecer a área esquerda */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)); /* Gradiente de preto para transparente */
+    z-index: -1;
+}
+
+/* Conteúdo principal */
+.content {
+    position: relative;
+    z-index: 10;
+    color: white;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    
+}
+
+.subtitle {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Formulário */
+.email-form {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.email-form input {
+    flex: 2;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.email-form button {
+    flex: 1;
+    padding: 10px;
+    background-color: #00404f;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    transition: background 0.3s ease;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.email-form button:hover {
+    background-color: #006677;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Botão Jogar */
+.play-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #d1a300;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-transform: uppercase;
+    transition: background 0.3s ease;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.play-button:hover {
+    background-color: #e6b800;
+    
+    
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .overlay {
+        width: 100%;
+    }
+    .title {
+        font-size: 3rem;
+    }
+    .subtitle {
+        font-size: 0.9rem;
+    }
 }
