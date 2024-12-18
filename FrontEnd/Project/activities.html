@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/activities.css">
+    <link rel="stylesheet" href="css/mapsAPI.css">
+    <script type="module" src="js/mapsAPI.js"></script>
 </head>
 <body>
     <header class="header">
@@ -25,7 +27,6 @@
                     <div class="dropdown-menu">
                         <a href="profile.html" onclick="navigateTo('profile.html')">Profile</a>
                         <a href="activities.html" onclick="navigateTo('activities.html')">Explore Activities</a>
-                        <a href="plan.html" onclick="navigateTo('plan.html')">Plane Activity</a>
                         <a href="contacts.html" onclick="navigateTo('contacts.html')">Contacts</a>
                     </div>
                 </div>
@@ -50,7 +51,32 @@
                 <tbody id="activities-list"></tbody>
             </table>
         </div>
+        <div class="map-container">
+            <gmpx-api-loader key="t5agE*tWahWsmu$" solution-channel="GMP_QB_addressselection_v3_cABC">
+            </gmpx-api-loader>
+            <gmpx-split-layout row-layout-min-width="600">
+              <div class="panel" slot="fixed">
+                <div>
+                  <img class="sb-title-icon" src="https://fonts.gstatic.com/s/i/googlematerialicons/location_pin/v5/24px.svg" alt="">
+                  <span class="sb-title">Address Selection</span>
+                </div>
+                <input type="text" placeholder="Address" id="location-input"/>
+                <input type="text" placeholder="Apt, Suite, etc (optional)"/>
+                <input type="text" placeholder="City" id="locality-input"/>
+                <div class="half-input-container">
+                  <input type="text" class="half-input" placeholder="State/Province" id="administrative_area_level_1-input"/>
+                  <input type="text" class="half-input" placeholder="Zip/Postal code" id="postal_code-input"/>
+                </div>
+                <input type="text" placeholder="Country" id="country-input"/>
+                <gmpx-icon-button variant="filled">Checkout</gmpx-icon-button>
+              </div>
+              <gmp-map slot="main">
+                <gmp-advanced-marker></gmp-advanced-marker>
+              </gmp-map>
+            </gmpx-split-layout>
+        </div>
     </main>
+    
 
     <script src="js/navigation.js"></script>
     <script src="js/activities.js"></script>
