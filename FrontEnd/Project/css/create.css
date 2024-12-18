@@ -12,6 +12,11 @@
     margin-bottom: 1.5rem;
 }
 
+.inputbox{
+
+    width: 100%;
+}
+
 label {
     display: block;
     font-size: 0.875rem;
