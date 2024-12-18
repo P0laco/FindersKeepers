@@ -1,3 +1,16 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9fafb;
+    color: #333;
+}
+
 /* Header styles */
 .header {
     position: fixed;
@@ -42,13 +55,11 @@ nav {
     gap: 16px;
 }
 
-/* Dropdown Container */
+/* Dropdown Menu */
 .dropdown {
     position: relative;
-    display: inline-block;
 }
 
-/* Dropdown Button */
 .dropdown-toggle {
     background-color: #ffffff;
     color: #333;
@@ -58,7 +69,6 @@ nav {
     border-radius: 4px;
 }
 
-/* Dropdown Menu */
 .dropdown-menu {
     display: none;
     position: absolute;
@@ -82,7 +92,69 @@ nav {
     background-color: #f2f2f2;
 }
 
-/* Show Dropdown on Hover */
 .dropdown:hover .dropdown-menu {
     display: block;
+}
+
+/* Profile Content */
+.profile-content {
+    margin-top: 80px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 24px;
+}
+
+h1, h2 {
+    margin-bottom: 16px;
+}
+
+/* Plan Activity Button */
+.plan-activity {
+    margin-bottom: 24px;
+}
+
+.plan-btn {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.plan-btn:hover {
+    background-color: #1d4ed8;
+}
+
+/* Activities Table */
+.activities-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+.activities-list th, .activities-list td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.activities-list th {
+    background-color: #f3f4f6;
+    font-weight: bold;
+}
+
+.delete-btn {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.delete-btn:hover {
+    background-color: #dc2626;
 }
