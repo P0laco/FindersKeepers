@@ -1,5 +1,8 @@
 package io.codeforall.fanstatics.Controllers;
 
+import io.codeforall.fanstatics.DTO.Converters.UserDTOToUser;
+import io.codeforall.fanstatics.DTO.Converters.UserToUserDTO;
+import io.codeforall.fanstatics.DTO.UserDTO;
 import io.codeforall.fanstatics.Models.User;
 import io.codeforall.fanstatics.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,19 +17,32 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.validation.Valid;
 
 @RestController
+@RequestMapping(path = "/user")
 public class UserController {
 
     private UserService userService;
+    private UserToUserDTO userToUserDTO;
+    private UserDTOToUser userDTOToUser;
 
     @Autowired
     public void setUserService(UserService userService){
         this.userService = userService;
     }
 
+    @Autowired
+    public void setUserToUserDTO(UserToUserDTO userToUserDTO){
+        this.userToUserDTO = userToUserDTO;
+    }
+
+    @Autowired
+    public void setUserDTOToUser(UserDTOToUser userDTOToUser){
+        this.userDTOToUser = userDTOToUser;
+    }
+
 
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    public ResponseEntity<User> getUser(@PathVariable Integer id){
+    public ResponseEntity<UserDTO> getUser(@PathVariable Integer id){
 
         User user = userService.get(id);
 
@@ -34,7 +50,7 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        return new ResponseEntity<>(userToUserDTO.convert(user), HttpStatus.OK);
     }
 
 
@@ -67,7 +83,7 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        if (user.get(id) == null) {
+        if (userService.get(id) == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 

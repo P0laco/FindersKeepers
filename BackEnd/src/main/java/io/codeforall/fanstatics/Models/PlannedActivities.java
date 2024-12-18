@@ -1,5 +1,6 @@
 package io.codeforall.fanstatics.Models;
 
+import io.codeforall.fanstatics.Models.Interfaces.Model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -7,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "planned_activities")
-public class PlannedActivities implements Serializable {
+public class PlannedActivities implements Serializable, Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,8 +22,13 @@ public class PlannedActivities implements Serializable {
     private Set<User> users;
 
     // Other fields
-    @Column(name = "activity_id")
-    private Integer activityId;
+    @ManyToOne
+    @JoinColumn(name = "activity_id", nullable = false)
+    private Activity activity;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @Column(name = "number_of_people")
     private Integer numberOfPeople;
@@ -35,6 +41,26 @@ public class PlannedActivities implements Serializable {
 
     @Column(name = "location")
     private String location;
+
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setNumberOfPeople(Integer numberOfPeople) {
+        this.numberOfPeople = numberOfPeople;
+    }
 
     // Getters and Setters
     public Integer getId() {
@@ -51,14 +77,6 @@ public class PlannedActivities implements Serializable {
 
     public void setUsers(Set<User> users) {
         this.users = users;
-    }
-
-    public Integer getActivityId() {
-        return activityId;
-    }
-
-    public void setActivityId(Integer activityId) {
-        this.activityId = activityId;
     }
 
     public int getNumberOfPeople() {

@@ -1,17 +1,26 @@
 package io.codeforall.fanstatics.Models;
 
 
+import io.codeforall.fanstatics.Models.Interfaces.Model;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "activity")
-public class Activity {
+public class Activity implements Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String description;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
