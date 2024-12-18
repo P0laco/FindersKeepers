@@ -1,7 +1,7 @@
 package io.codeforall.fanstatics.Models;
 
 import jakarta.persistence.*;
-
+/*
 @Entity
 @Table(name = "activity_participants")
 public class ActivityParticipants {
@@ -48,3 +48,5 @@ public class ActivityParticipants {
         this.user = user;
     }
 }
+ */
+
