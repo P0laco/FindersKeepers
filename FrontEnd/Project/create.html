@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Activity - Active Buddies</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/create.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo" onclick="navigateTo('index.html')">
+                <img src="images/dumbbell.svg" alt="Active Buddies Logo">
+                <span>Active Buddies</span>
+            </div>
+            <nav>
+                <button class="btn-secondary" onclick="navigateTo('login.html')">Login</button>
+                <button class="btn-primary" onclick="navigateTo('register.html')">Register</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="create-form">
+            <h1>Create New Activity</h1>
+            <form id="activity-form" onsubmit="handleCreateActivity(event)">
+                <div class="form-group">
+                    <label for="type">Activity Type</label>
+                    <select id="type" name="type" required>
+                        <option value="">Select type</option>
+                        <option value="football">Football</option>
+                        <option value="basketball">Basketball</option>
+                        <option value="tennis">Tennis</option>
+                        <option value="volleyball">Volleyball</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="time">Time</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="requiredPlayers">Required Players</label>
+                    <input type="number" id="requiredPlayers" name="requiredPlayers" min="2" required>
+                </div>
+
+                <button type="submit" class="btn-primary btn-full">Create Activity</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/create.js"></script>
+</body>
+</html>
