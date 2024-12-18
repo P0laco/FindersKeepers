@@ -14,7 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.validation.Valid;
 
 @RestController
-public class UserControllerImpl {
+public class UserController {
 
     private UserService userService;
 
@@ -89,13 +89,7 @@ public class UserControllerImpl {
 
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
-
-
-
 }
+
