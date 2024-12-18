@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Active Buddies - Find Your Sports Partner</title>
+    <title>User Profile</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/carousel.css">
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/activities.css">
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
         <div class="header-content">
             <div class="logo" onclick="navigateTo('index.html')">
@@ -34,24 +34,46 @@
         </div>
     </header>
 
-    <main>
-        <div class="carousel">
-            <div class="carousel-slides"></div>
-            <div class="carousel-overlay"></div>
-        </div>
-
-        <div class="hero-content">
-            <h1>Find Your Sports Buddy Today</h1>
-            <p>Join Active Buddies to discover and participate in local sports events. 
-               Whether you're looking for a football match, basketball game, or tennis partner, 
-               we've got you covered.</p>
-            <button class="btn-primary btn-large" onclick="navigateTo('activities.html')">
-                Explore Activities
-            </button>
-        </div>
+    <!-- Profile Content -->
+    <main class="profile-content">
+        <h1>My Profile</h1>
+        <!-- Lista de Atividades -->
+        <section class="activities-list">
+            <h2>My Profile</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Location</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Football</td>
+                        <td>2024-03-20</td>
+                        <td>18:00</td>
+                        <td>Central Park</td>
+                        <td>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Basketball</td>
+                        <td>2024-03-21</td>
+                        <td>19:30</td>
+                        <td>Sports Center</td>
+                        <td>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
     </main>
 
-    <script src="js/navigation.js"></script>
-    <script src="js/carousel.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
