@@ -30,9 +30,41 @@ async function fetchDataParticipants() {
 // Call the fetch function
 fetchDataParticipants();
 
+const API_ACTIVITIES_URL = "http://localhost:8080/api/activity";
 
+// Fetch API Data
+async function fetchDataActivity() {
+    try {
+        const response = await fetch(API_ACTIVITIES_URL);
+        if (!response.ok) throw new Error('Failed to fetch data');
+        
+        const data = await response.json();
+        console.log(data); // Use the data in your UI
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+// Call the fetch function
+fetchDataActivity();
 
-
+async function createActivity(newActivity) {
+    try {
+        const response = await fetch(API_ACTIVITIES_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newActivity),
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const createdActivity = await response.json();
+        console.log("Activity created:", createdActivity);
+    } catch (error) {
+        console.error("Error creating activity:", error);
+    }
+}
 
 
 
@@ -87,7 +119,10 @@ newActivityForm.addEventListener("submit", (e) => {
         <td>${time}</td>
         <td>${location}</td>
         <td>${peopleNeeded}</td>
-        <td><button class="delete-btn">Delete</button></td>
+        <td>
+        <button class="contact-btn">Contact People</button>
+        <button class="delete-btn">Delete</button>
+        </td>
     `;
 
     // Adicionar funcionalidade ao botão delete
