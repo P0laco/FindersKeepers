@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Active Buddies</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo" onclick="navigateTo('index.html')">
+                <img src="images/dumbbell.svg" alt="Active Buddies Logo">
+                <span>Active Buddies</span>
+            </div>
+            <nav>
+                <button class="btn-secondary" onclick="navigateTo('login.html')">Login</button>
+                <button class="btn-primary" onclick="navigateTo('register.html')">Register</button>
+                 <!-- Dropdown Button -->
+                 <div class="dropdown">
+                    <button class="btn-secondary dropdown-toggle">Menu</button>
+                    <div class="dropdown-menu">
+                        <a href="profile.html" onclick="navigateTo('profile.html')">Profile</a>
+                        <a href="activities.html" onclick="navigateTo('activities.html')">Explore Activities</a>
+                        <a href="contacts.html" onclick="navigateTo('contacts.html')">Terms and Conditions</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="auth-form">
+            <h1>Create Account</h1>
+            <form id="register-form" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" required>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+
+                <div class="terms-agreement">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">
+                        I agree to the <a href="contacts.html">Terms of Service</a> and 
+                        <a href="contacts.html">Privacy Policy</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-primary btn-full">Create Account</button>
+
+                <p class="auth-switch">
+                    Already have an account? 
+                    <a href="login.html">Sign in</a>
+                </p>
+            </form>
+        </div>
+    </main>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
