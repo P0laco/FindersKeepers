@@ -12,12 +12,15 @@ import io.codeforall.fanstatics.Services.Interfaces.UserServiceInterface;
 import io.codeforall.fanstatics.Services.PlannedActivitiesService;
 import io.codeforall.fanstatics.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -76,10 +79,53 @@ public class PlannedActivityController {
 
 
     //show activity
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    public ResponseEntity<PlannedActivitiesDTO> getPlannedActivity(@PathVariable Integer id){
 
+        PlannedActivities plannedActivities = plannedActivityService.get(id);
+
+        if(plannedActivities == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(plannedActivityToPlannedActivityDTO.convert(plannedActivities), HttpStatus.OK);
+    }
 
     //add activity
 
+    @RequestMapping(method = RequestMethod.POST, path = "/add")
+    public ResponseEntity<?> addPlannedActivity(@Valid @RequestBody PlannedActivitiesDTO plannedActivitiesDTO, BindingResult bindingResult, UriComponentsBuilder uriComponentsBuilder){
+
+        if(bindingResult.hasErrors() || plannedActivitiesDTO.getId() != null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+       try {
+           PlannedActivities plannedActivities = plannedActivityService.create(plannedActivityDTOToPlannedActivity.convert(plannedActivitiesDTO));
+           UriComponents uriComponents = uriComponentsBuilder.path("/api/planned-activities/" + plannedActivities.getId()).build();
+           HttpHeaders headers = new HttpHeaders();
+           headers.setLocation(uriComponents.toUri());
+
+           return new ResponseEntity<>(headers, HttpStatus.CREATED);
+
+       } catch (Exception e){
+           return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+       }
+
+    }
 
     //delete activity
+
+    @RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
+    public ResponseEntity<PlannedActivities> deletePlannedActivity(@PathVariable Integer id) {
+
+        try {
+
+            plannedActivityService.delete(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 }

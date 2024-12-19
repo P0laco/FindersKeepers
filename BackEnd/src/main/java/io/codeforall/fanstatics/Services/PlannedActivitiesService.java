@@ -6,10 +6,12 @@ import io.codeforall.fanstatics.Daos.Interfaces.PlannedActivitiesDaoInterface;
 import io.codeforall.fanstatics.Daos.Interfaces.UserDaoInterface;
 import io.codeforall.fanstatics.Models.PlannedActivities;
 import io.codeforall.fanstatics.Services.Interfaces.PlannedActivitiesServiceInterface;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PlannedActivitiesService implements PlannedActivitiesServiceInterface {
@@ -39,14 +41,24 @@ public class PlannedActivitiesService implements PlannedActivitiesServiceInterfa
         return plannedActivitiesDao.findById(id);
     }
 
+    @Transactional
     @Override
     public PlannedActivities create(PlannedActivities plannedActivities) {
-        return null;
+        return plannedActivitiesDao.saveOrUpdate(plannedActivities);
     }
 
+    @Transactional
     @Override
-    public PlannedActivities delete(PlannedActivities plannedActivities, Integer id) {
-        return null;
+    public void delete(Integer id) {
+
+        PlannedActivities plannedActivities = Optional.ofNullable(plannedActivitiesDao.findById(id))
+                .orElseThrow(Error::new);
+
+        if (plannedActivities.getActivity() == null) {
+            throw new RuntimeException("No planned activities found");
+        }
+
+       plannedActivitiesDao.delete(id);
     }
 
     @Override
