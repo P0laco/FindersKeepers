@@ -1,6 +1,7 @@
 io/codeforall/fanstatics/Models/PlannedActivities.class
 io/codeforall/fanstatics/Controllers/ActivityController.class
 io/codeforall/fanstatics/Services/UserService.class
+io/codeforall/fanstatics/Services/Interfaces/ActivityParticipantsInterface.class
 io/codeforall/fanstatics/Services/Interfaces/PlannedActivitiesServiceInterface.class
 io/codeforall/fanstatics/Controllers/PlannedActivityController.class
 io/codeforall/fanstatics/DTO/Converters/ActivityDTOToActivity.class
@@ -8,7 +9,10 @@ io/codeforall/fanstatics/Models/Activity.class
 io/codeforall/fanstatics/Services/ActivityService.class
 io/codeforall/fanstatics/DTO/Converters/ActivityToActivityDTO.class
 io/codeforall/fanstatics/Controllers/UserController.class
+io/codeforall/fanstatics/Daos/ActivityParticipantsDao.class
 io/codeforall/fanstatics/DTO/Converters/UserToUserDTO.class
+io/codeforall/fanstatics/Services/ActivityParticipantsService.class
+io/codeforall/fanstatics/Controllers/ActivityParticipantsController.class
 io/codeforall/fanstatics/Services/Interfaces/UserServiceInterface.class
 io/codeforall/fanstatics/DTO/Converters/PlannedActivitiesToPlannedActivitiesDTO.class
 io/codeforall/fanstatics/DTO/UserDTO.class
@@ -30,3 +34,4 @@ io/codeforall/fanstatics/Daos/Interfaces/ActivityDaoInterface.class
 io/codeforall/fanstatics/Daos/PlannedActivitesDao.class
 io/codeforall/fanstatics/Daos/Interfaces/PlannedActivitiesDaoInterface.class
 io/codeforall/fanstatics/DemoApplication.class
+io/codeforall/fanstatics/Daos/Interfaces/ActivityParticipantsDaoInterface.class
