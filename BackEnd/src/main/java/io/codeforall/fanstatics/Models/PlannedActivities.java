@@ -21,6 +21,7 @@ public class PlannedActivities implements Serializable, Model {
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> users;
 
+
     // Other fields
     @ManyToOne
     @JoinColumn(name = "activity_id", nullable = false)
