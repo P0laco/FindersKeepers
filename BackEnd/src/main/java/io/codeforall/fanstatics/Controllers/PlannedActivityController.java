@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/planned-activities")
+@RequestMapping("/api/planned-activities")
 public class PlannedActivityController {
 
 

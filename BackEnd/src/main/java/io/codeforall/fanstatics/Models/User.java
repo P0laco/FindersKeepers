@@ -5,6 +5,8 @@ import io.codeforall.fanstatics.Models.PlannedActivities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,6 +38,8 @@ public class User implements Serializable, Model {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "planned_activity_id"))
     private Set<PlannedActivities> plannedActivities;
+
+
 
     // Getters and Setters
     public Integer getId() {

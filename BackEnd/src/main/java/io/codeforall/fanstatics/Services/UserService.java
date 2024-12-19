@@ -44,6 +44,7 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
+    @org.springframework.transaction.annotation.Transactional
     public void delete(Integer id) {
 
         User user = Optional.ofNullable(userDao.findById(id))
