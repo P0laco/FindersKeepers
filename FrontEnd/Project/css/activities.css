@@ -32,3 +32,19 @@ td {
 tr:hover {
     background-color: #f9fafb;
 }
+
+/* Search container styles */
+.search-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+}
+
+#search-input {
+    width: 300px; /* Define um tamanho menor */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
