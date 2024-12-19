@@ -50,12 +50,15 @@ public class ActivityParticipantsController {
         return new ResponseEntity<>(activityParticipants, HttpStatus.OK);
     }
     //add
-    @RequestMapping(method = RequestMethod.POST, path = "/add")
-    public ResponseEntity<?> addActivityParticipants(@Valid @RequestBody Integer userId, Integer plannedActivityId,  BindingResult bindingResult, UriComponentsBuilder uriComponentsBuilder){
+    @RequestMapping(method = RequestMethod.POST, path = "/add/{userId}/{plannedActivityId}")
+    public ResponseEntity<?> addActivityParticipants(@Valid @RequestBody @PathVariable Integer userId, @PathVariable Integer plannedActivityId){
 
-        if (bindingResult.hasErrors() || plannedActivityId != null) {
+        /*
+        if (bindingResult.hasErrors() || plannedActivityId == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+
+         */
 
         try {
 
@@ -81,20 +84,6 @@ public class ActivityParticipantsController {
                 System.out.println("Error deleting activity participant: " + e.getMessage());
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
-    }
-
-
-    @RequestMapping(method = RequestMethod.DELETE, path = "/delete")
-    public ResponseEntity<?> deleteActivityParticipants(@RequestBody Map<String, Integer> params) {
-        Integer userId = params.get("user_id");
-        Integer plannedActivityId = params.get("planned_activity_id");
-
-        try {
-            activityParticipantsService.deleteUserFromPlannedActivity(userId, plannedActivityId);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
     }
 
 }

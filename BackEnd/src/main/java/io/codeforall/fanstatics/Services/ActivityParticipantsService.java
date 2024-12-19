@@ -36,11 +36,13 @@ public class ActivityParticipantsService implements ActivityParticipantsInterfac
     }
 
     @Override
+    @Transactional
     public void addUserToPlannedActivity(Integer userId, Integer plannedActivityId) {
        activityParticipantsDao.addUserToPlannedActivity(userId, plannedActivityId);
     }
 
     @Override
+    @Transactional
     public void deleteUserFromPlannedActivity(Integer userId, Integer plannedActivityId) {
         activityParticipantsDao.deleteUserFromPlannedActivity(userId, plannedActivityId);
     }
