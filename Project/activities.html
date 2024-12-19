@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities - Active Buddies</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/activities.css">
+    <link rel="stylesheet" href="css/mapsAPI.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <script type="module" src="js/mapsAPI.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo" onclick="navigateTo('index.html')">
+                <img src="images/dumbbell.svg" alt="Active Buddies Logo">
+                <span>Active Buddies</span>
+            </div>
+            <nav>
+                <button class="btn-secondary" onclick="navigateTo('login.html')">Login</button>
+                <button class="btn-primary" onclick="navigateTo('register.html')">Register</button>
+                <!-- Dropdown Button -->
+                <div class="dropdown">
+                    <button class="btn-secondary dropdown-toggle">Menu</button>
+                    <div class="dropdown-menu">
+                        <a href="profile.html" onclick="navigateTo('profile.html')">Profile</a>
+                        <a href="contacts.html" onclick="navigateTo('contacts.html')">Terms and conditions</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Available Activities</h1>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search activities...">
+        </div>
+        <div class="activities-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Location</th>
+                        <th>Players</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="activities-list"></tbody>
+            </table>
+        </div>
+        <div class="map-container">
+            <gmpx-api-loader key="AIzaSyBuwB7_RiSRnecqKy0zARk9QrikdMqYGOk" solution-channel="GMP_QB_addressselection_v3_cABC">
+            </gmpx-api-loader>
+            <gmpx-split-layout row-layout-min-width="600">
+              <div class="panel" slot="fixed">
+                <div>
+                  <img class="sb-title-icon" src="https://fonts.gstatic.com/s/i/googlematerialicons/location_pin/v5/24px.svg" alt="">
+                  <span class="sb-title">Address Selection</span>
+                </div>
+                <input type="text" placeholder="Address" id="location-input"/>
+                <input type="text" placeholder="Apt, Suite, etc (optional)"/>
+                <input type="text" placeholder="City" id="locality-input"/>
+                <div class="half-input-container">
+                  <input type="text" class="half-input" placeholder="State/Province" id="administrative_area_level_1-input"/>
+                  <input type="text" class="half-input" placeholder="Zip/Postal code" id="postal_code-input"/>
+                </div>
+                <input type="text" placeholder="Country" id="country-input"/>
+                <gmpx-icon-button variant="filled">Checkout</gmpx-icon-button>
+              </div>
+              <gmp-map slot="main">
+                <gmp-advanced-marker></gmp-advanced-marker>
+              </gmp-map>
+            </gmpx-split-layout>
+        </div>
+    </main>
+    
+
+    <script src="js/navigation.js"></script>
+    <script src="js/activities.js"></script>
+</body>
+</html>

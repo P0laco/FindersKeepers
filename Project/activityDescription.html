@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Details - Active Buddies</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/activity.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo" onclick="navigateTo('index.html')">
+                <img src="images/dumbbell.svg" alt="Active Buddies Logo">
+                <span>Active Buddies</span>
+            </div>
+            <nav>
+                <button class="btn-secondary" onclick="navigateTo('login.html')">Login</button>
+                <button class="btn-primary" onclick="navigateTo('register.html')">Register</button>
+                <!-- Dropdown Button -->
+                <div class="dropdown">
+                    <button class="btn-secondary dropdown-toggle">Menu</button>
+                    <div class="dropdown-menu">
+                        <a href="profile.html" onclick="navigateTo('profile.html')">Profile</a>
+                        <a href="activities.html" onclick="navigateTo('activities.html')">Explore Activities</a>
+                        <a href="contacts.html" onclick="navigateTo('contacts.html')">Terms and Conditions</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="activity-details">
+            <h1>Activity Name</h1>
+            <div class="activity-info">
+                <p><strong>Location:</strong> Activity Location</p>
+                <p><strong>Date:</strong> Activity Date</p>
+                <p><strong>Time:</strong> Activity Time</p>
+                <p><strong>Number of Players:</strong> Number of Players</p>
+            </div>
+            <div class="activity-map">
+                <h2>Location Map</h2>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509374!2d144.9630579153167!3d-37.81627997975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d1f9c1b1e0e!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1613979931234!5m2!1sen!2sau" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="activity-description">
+                <h2>Description</h2>
+                <p>Activity Description from the database.</p>
+            </div>
+            <div class="activity-image">
+                <h2>Sport Image</h2>
+                <img src="images/sport.jpg" alt="Sport Image">
+            </div>
+            <div class="join-button">
+                <button class="btn-primary">Join</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/navigation.js"></script>
+</body>
+</html>

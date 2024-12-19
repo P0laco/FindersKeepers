@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/activities.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/carousel.css">
+    <link rel="stylesheet" href="css/create.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/join.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo" onclick="navigateTo('index.html')">
+                <img src="images/dumbbell.svg" alt="Active Buddies Logo">
+                <span>Active Buddies</span>
+            </div>
+            <nav>
+                <button class="btn-secondary" onclick="navigateTo('login.html')">Login</button>
+                <button class="btn-primary" onclick="navigateTo('register.html')">Register</button>
+                <!-- Dropdown Button -->
+                <div class="dropdown">
+                    <button class="btn-secondary dropdown-toggle">Menu</button>
+                    <div class="dropdown-menu">
+                        <a href="activities.html" onclick="navigateTo('activities.html')">Explore Activities</a>
+                        <a href="contacts.html" onclick="navigateTo('contacts.html')">Terms and Conditions</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Profile Content -->
+    <main class="container">
+        <h1>My Profile</h1>
+        <!-- Lista de Atividades -->
+        <div class="activities-list">
+            <h2>My Planed Activities</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Location</th>
+                        <th>Players</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td href="activityDescription.html" onclick="navigateTo('activityDescription.html')"></tdhref>Football</td>
+                        <td href="activityDescription.html" onclick="navigateTo('activityDescription.html')"></tdhref>2024-03-20</td>
+                        <td href="activityDescription.html" onclick="navigateTo('activityDescription.html')"></tdhref>18:00</td>
+                        <td href="activityDescription.html" onclick="navigateTo('activityDescription.html')"></tdhref>Central Park</td>
+                        <td href="activityDescription.html" onclick="navigateTo('activityDescription.html')"></tdhref>2/7</td>
+                        <td>
+                            <button class="contact-btn">Contact People</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Basketball</td>
+                        <td>2024-03-21</td>
+                        <td>19:30</td>
+                        <td>Sports Center</td>
+                        <td>1/5</td>
+                        <td>
+                            <button class="contact-btn">Contact People</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+                <!-- Botão para abrir o formulário -->
+        <button id="openFormBtn" class="plan-btn">Add Activity</button>
+
+        </div>
+
+        <div class="activities-enrolled">
+            <h2>Activities Enrolled</h2>
+            <div class="activities-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Location</th>
+                            <th>Players</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="enrolled-activities-list"></tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+
+
+<!-- Formulário Modal -->
+<div id="activityFormModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 2000;">
+    <div style="margin: 10% auto; padding: 20px; background: white; width: 50%; border-radius: 8px;">
+        <h2>Create new activity</h2>
+        <form id="newActivityForm">
+            <label>Type:</label>
+            <select id="activityType">
+                <option value="Football">Football</option>
+                <option value="Basketball">Basketball</option>
+                <option value="Yoga">Yoga</option>
+            </select><br><br>
+
+            <label>Date:</label>
+            <input type="date" id="activityDate" required><br><br>
+
+            <label>Time:</label>
+            <input type="time" id="activityTime" required><br><br>
+
+            <label>Location:</label>
+            <input type="text" id="activityLocation" required><br><br>
+
+            <label>Number of people needed:</label>
+            <input type="number" id="activityPeople" min="1" required><br><br>
+
+            <!-- Botões -->
+            <button type="submit" class="plan-btn">Create</button>
+            <button type="button" id="closeFormBtn" class="delete-btn">Cancel</button>
+        </form>
+    </div>
+</div>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>
