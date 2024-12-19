@@ -1,5 +1,6 @@
 package io.codeforall.fanstatics.Models;
 
+import io.codeforall.fanstatics.Models.Interfaces.Model;
 import io.codeforall.fanstatics.Models.PlannedActivities;
 import jakarta.persistence.*;
 
@@ -8,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "user")
-public class User implements Serializable {
+public class User implements Serializable, Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

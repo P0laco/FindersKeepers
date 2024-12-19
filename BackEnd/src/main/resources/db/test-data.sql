@@ -15,19 +15,19 @@ INSERT INTO activity (name, description) VALUES
 
 DELETE FROM planned_activities;
 
-INSERT INTO planned_activities ( activity_id, number_of_people, date, time, location) VALUES
-(1, 3, '2022-03-01', '10:00', 'porto'),
-( 2, 3, '2022-03-01', '20:00', 'porto'),
-( 3, 3, '2022-03-01', '15:00', 'porto'),
-( 1, 3, '2022-03-01', '10:00', 'porto'),
-( 2, 3, '2022-03-01', '10:00', 'porto'),
-( 3, 3, '2022-03-01', '10:00', 'porto'),
-( 1, 3, '2022-03-01', '10:00', 'gaia'),
-( 2, 3, '2022-03-01', '10:00', 'gaia'),
-( 3, 3, '2022-03-01', '10:00', 'gaia'),
-( 1, 3, '2022-03-01', '10:00', 'gaia'),
-( 2, 3, '2022-03-01', '10:00', 'gaia'),
-( 3, 3, '2022-03-01', '10:00', 'gaia');
+INSERT INTO planned_activities ( activity_id, user_id, number_of_people, date, time, location) VALUES
+(1, 1, 3, '2022-03-01', '10:00', 'porto'),
+( 2, 1, 3, '2022-03-01', '20:00', 'porto'),
+( 3, 1, 3, '2022-03-01', '15:00', 'porto'),
+( 1, 2, 3, '2022-03-01', '10:00', 'porto'),
+( 2, 2, 3, '2022-03-01', '10:00', 'porto'),
+( 3, 2, 3, '2022-03-01', '10:00', 'porto'),
+( 1, 3, 3, '2022-03-01', '10:00', 'gaia'),
+( 2, 3, 3, '2022-03-01', '10:00', 'gaia'),
+( 3, 3, 3, '2022-03-01', '10:00', 'gaia'),
+( 1, 4, 3, '2022-03-01', '10:00', 'gaia'),
+( 2, 4, 3, '2022-03-01', '10:00', 'gaia'),
+( 3, 4, 3, '2022-03-01', '10:00', 'gaia');
 
 DELETE FROM activity_participants;
 

@@ -1,16 +1,18 @@
 package io.codeforall.fanstatics.Services.Interfaces;
 
-import io.codeforall.fanstatics.Models.Activity;
 import io.codeforall.fanstatics.Models.PlannedActivities;
-import io.codeforall.fanstatics.Services.ActivityService;
 
-public interface PlannedActivityServiceInterface {
+import java.util.List;
+
+public interface PlannedActivitiesServiceInterface {
 
     PlannedActivities get(Integer id);
 
     PlannedActivities create(PlannedActivities plannedActivities);
 
     PlannedActivities delete(PlannedActivities plannedActivities, Integer id);
+
+    List<PlannedActivities> list();
 
 
 

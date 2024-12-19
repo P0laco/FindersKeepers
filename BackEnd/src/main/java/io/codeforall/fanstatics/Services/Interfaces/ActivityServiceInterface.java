@@ -2,6 +2,8 @@ package io.codeforall.fanstatics.Services.Interfaces;
 
 import io.codeforall.fanstatics.Models.Activity;
 
+import java.util.List;
+
 public interface ActivityServiceInterface {
 
 
@@ -9,5 +11,7 @@ public interface ActivityServiceInterface {
 
 
     Activity get(Integer id);
+
+    List<Activity> list();
 
 }

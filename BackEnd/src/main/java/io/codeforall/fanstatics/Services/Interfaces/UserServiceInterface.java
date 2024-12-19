@@ -10,7 +10,9 @@ public interface UserServiceInterface {
 
     User save(User user);
 
-    User delete(Integer id);
+    void delete(Integer id);
+
+
 
     PlannedActivities addPlannedActivities(Integer id, PlannedActivities plannedActivities);
 }
