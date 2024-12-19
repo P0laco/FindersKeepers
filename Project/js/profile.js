@@ -1,3 +1,41 @@
+// Fetch API Data
+async function fetchDataUser() {
+    try {
+        const response = await fetch('http://localhost:8080/api/user');
+        if (!response.ok) throw new Error('Failed to fetch data');
+        
+        const data = await response.json();
+        console.log(data); // Use the data in your UI
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+// Call the fetch function
+fetchDataUser();
+
+// Fetch API Data
+async function fetchDataParticipants() {
+    try {
+        const response = await fetch('http://localhost:8080/api/activity-participants');
+        if (!response.ok) throw new Error('Failed to fetch data');
+        
+        const data = await response.json();
+        console.log(data); // Use the data in your UI
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+// Call the fetch function
+fetchDataParticipants();
+
+
+
+
+
+
+
 // Evento de delete de atividades
 document.addEventListener("DOMContentLoaded", function () {
     const deleteButtons = document.querySelectorAll(".delete-btn");
