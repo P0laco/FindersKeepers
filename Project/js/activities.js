@@ -1,23 +1,35 @@
-const activities = [
-    {
-        id: '1',
-        type: 'Football',
-        date: '2024-03-20',
-        time: '18:00',
-        location: 'Central Park',
-        requiredPlayers: 10,
-        currentPlayers: 6
-    },
-    {
-        id: '2',
-        type: 'Basketball',
-        date: '2024-03-21',
-        time: '19:30',
-        location: 'Sports Center',
-        requiredPlayers: 8,
-        currentPlayers: 4
+// Fetch API Data
+async function fetchDataActivity() {
+    try {
+        const response = await fetch('http://localhost:8080/api/activity');
+        if (!response.ok) throw new Error('Failed to fetch data');
+        
+        const data = await response.json();
+        console.log(data); // Use the data in your UI
+    } catch (error) {
+        console.error('Error:', error);
     }
-];
+}
+// Call the fetch function
+fetchDataActivity();
+
+// Fetch API Data
+async function fetchDataPlanned() {
+    try {
+        const response = await fetch('http://localhost:8080/api/planned-activities');
+        if (!response.ok) throw new Error('Failed to fetch data');
+        
+        const data = await response.json();
+        console.log(data); // Use the data in your UI
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+// Call the fetch function
+fetchDataPlanned();
+
+
 
 function renderActivities() {
     const tbody = document.getElementById('activities-list');
