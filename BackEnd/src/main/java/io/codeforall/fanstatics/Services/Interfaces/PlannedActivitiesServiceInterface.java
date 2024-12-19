@@ -10,7 +10,7 @@ public interface PlannedActivitiesServiceInterface {
 
     PlannedActivities create(PlannedActivities plannedActivities);
 
-    PlannedActivities delete(PlannedActivities plannedActivities, Integer id);
+    void delete( Integer id);
 
     List<PlannedActivities> list();
 

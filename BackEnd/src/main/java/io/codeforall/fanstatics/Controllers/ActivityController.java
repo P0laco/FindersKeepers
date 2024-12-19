@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@RequestMapping("/activity")
 public class ActivityController {
 
 
@@ -42,7 +43,7 @@ public class ActivityController {
     }
 
 
-    @RequestMapping(method = RequestMethod.GET, path = "/activity")
+    @RequestMapping(method = RequestMethod.GET, path = {"/", ""})
     public ResponseEntity<List<ActivityDTO>> listActivity() {
 
         List<ActivityDTO> activityDTOS = activityService.list().stream()
@@ -56,21 +57,21 @@ public class ActivityController {
 
 
 
-    @RequestMapping(method = RequestMethod.GET, path = "")
-    public ResponseEntity<Activity> get(@PathVariable Integer id) {
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    public ResponseEntity<ActivityDTO> get(@PathVariable Integer id) {
 
         Activity activity = activityService.get(id);
 
         if(activity == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-/*
-        if(!activity.getActivity().getId().equals(id)){
+
+        if(!activity.getId().equals(id)){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
- */
 
-        return new ResponseEntity<>(activity, HttpStatus.OK);
+
+        return new ResponseEntity<>(activityToActivityDTO.convert(activity), HttpStatus.OK);
     }
 }
