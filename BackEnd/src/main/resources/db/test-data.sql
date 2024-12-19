@@ -1,3 +1,9 @@
+DROP DATABASE active_buddies;
+
+CREATE DATABASE active_buddies;
+
+USE active_buddies;
+
 DELETE FROM user;
 
 INSERT INTO user (name, age, location, email, password) VALUES
