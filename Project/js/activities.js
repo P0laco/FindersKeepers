@@ -4,14 +4,15 @@ async function fetchDataActivity() {
         const response = await fetch('http://localhost:8080/api/activity');
         if (!response.ok) throw new Error('Failed to fetch data');
         
-        const data = await response.json();
-        console.log(data); // Use the data in your UI
+        const data = await response.json(); 
+        return data; // Return the data
+      
     } catch (error) {
         console.error('Error:', error);
     }
 }
 // Call the fetch function
-fetchDataActivity();
+
 
 // Fetch API Data
 async function fetchDataPlanned() {
@@ -21,29 +22,36 @@ async function fetchDataPlanned() {
         
         const data = await response.json();
         console.log(data); // Use the data in your UI
+        return data;
     } catch (error) {
         console.error('Error:', error);
     }
 }
 
 // Call the fetch function
-fetchDataPlanned();
 
 
-
-function renderActivities() {
+function renderActivities(activityData, plannedData) {
     const tbody = document.getElementById('activities-list');
     
-    activities.forEach(activity => {
+    plannedData.forEach((plannedActivity, index) => {
+        
+        const activityName = index  < activityData.length ? activityData[index].name : activityData[index - 3].name;
+        const date = plannedActivity.date;
+        const time = plannedActivity.time;
+        const location = plannedActivity.location;
+        const numberOfPeople = plannedActivity.numberOfPeople;
+
+        console.log(plannedData, "Aaaaaaaaa");
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td>${activity.type}</td>
-            <td>${activity.date}</td>
-            <td>${activity.time}</td>
-            <td>${activity.location}</td>
-            <td>${activity.currentPlayers}/${activity.requiredPlayers}</td>
+            <td>${activityName}</td>
+            <td>${date}</td>
+            <td>${time}</td>
+            <td>${location}</td>
+            <td>${numberOfPeople}/${numberOfPeople}</td>
             <td>
-                <button class="btn-primary" onclick="joinActivity('${activity.id}')">
+                <button class="btn-primary" onclick="joinActivity('${plannedActivity.id}')">
                     Join
                 </button>
             </td>
@@ -57,4 +65,8 @@ function joinActivity(id) {
     console.log('Joining activity:', id);
 }
 
-document.addEventListener('DOMContentLoaded', renderActivities);
+document.addEventListener('DOMContentLoaded', async () => {
+    const activityData =  await fetchDataActivity();
+    const plannedData = await fetchDataPlanned();
+    renderActivities(activityData, plannedData);
+});

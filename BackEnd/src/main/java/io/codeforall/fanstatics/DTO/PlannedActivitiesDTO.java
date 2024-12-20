@@ -6,12 +6,21 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class PlannedActivitiesDTO {
 
     private Integer id;
+    private String activityName;
     private String date;
     private String location;
     private int numberOfPeople;
     private String time;
     private ActivityDTO activity;
     private UserDTO user;
+
+    public String getActivityName() {
+        return activityName;
+    }
+
+    public void setActivityName(String activityName) {
+        this.activityName = activity.getName();
+    }
 
     public Integer getId() {
         return id;

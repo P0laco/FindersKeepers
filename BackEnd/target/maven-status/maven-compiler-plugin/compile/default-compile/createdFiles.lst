@@ -11,11 +11,13 @@ io/codeforall/fanstatics/DTO/Converters/ActivityToActivityDTO.class
 io/codeforall/fanstatics/Controllers/UserController.class
 io/codeforall/fanstatics/Daos/ActivityParticipantsDao.class
 io/codeforall/fanstatics/DTO/Converters/UserToUserDTO.class
+io/codeforall/fanstatics/Config/SecurityConfig.class
 io/codeforall/fanstatics/Services/ActivityParticipantsService.class
 io/codeforall/fanstatics/Controllers/ActivityParticipantsController.class
 io/codeforall/fanstatics/Services/Interfaces/UserServiceInterface.class
 io/codeforall/fanstatics/DTO/Converters/PlannedActivitiesToPlannedActivitiesDTO.class
 io/codeforall/fanstatics/DTO/UserDTO.class
+io/codeforall/fanstatics/Config/CorsConfig.class
 io/codeforall/fanstatics/Services/Interfaces/ActivityServiceInterface.class
 io/codeforall/fanstatics/DTO/Converters/UserDTOToUser.class
 io/codeforall/fanstatics/Daos/ActivityDao.class
