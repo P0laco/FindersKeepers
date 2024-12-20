@@ -1,8 +1,9 @@
 // Fetch API Data
-async function fetchDataUser() {
+async function fetchDataUser(id) {
     try {
-        const response = await fetch('http://localhost:8080/api/user');
+        const response = await fetch(`http://localhost:8080/api/user/${id}`);
         if (!response.ok) throw new Error('Failed to fetch data');
+        console.log(response);
         
         const data = await response.json();
         console.log(data); // Use the data in your UI
@@ -10,7 +11,6 @@ async function fetchDataUser() {
         console.error('Error:', error);
     }
 }
-
 // Call the fetch function
 fetchDataUser();
 
@@ -30,7 +30,7 @@ async function fetchDataParticipants() {
 // Call the fetch function
 fetchDataParticipants();
 
-const API_ACTIVITIES_URL = "http://localhost:8080/api/activity";
+const API_ACTIVITIES_URL = "http://localhost:8080/api/planned-activities";
 
 // Fetch API Data
 async function fetchDataActivity() {
@@ -61,6 +61,29 @@ async function createActivity(newActivity) {
         }
         const createdActivity = await response.json();
         console.log("Activity created:", createdActivity);
+
+        const table = document.querySelector(".activities-list table tbody");
+        const newRow = table.insertRow();
+
+        newRow.innerHTML = `    
+            <td>${createdActivity.type}</td>
+            <td>${createdActivity.date}</td>    
+            <td>${createdActivity.time}</td>    
+            <td>${createdActivity.location}</td>    
+            <td>${createdActivity.peopleNeeded}</td>
+            <td>
+                <button class="contact-btn">Contact People</button> 
+                <button class="delete-btn">Delete</button>  
+            </td>    
+        `;
+
+        const deleteButton = newRow.querySelector(".delete-btn");
+        deleteButton.addEventListener("click", function () {
+            if (confirm("Are you sure you want to delete this activity?")) {
+                newRow.remove();
+            }
+        });
+    
     } catch (error) {
         console.error("Error creating activity:", error);
     }
@@ -109,30 +132,15 @@ newActivityForm.addEventListener("submit", (e) => {
     const location = document.getElementById("activityLocation").value;
     const peopleNeeded = document.getElementById("activityPeople").value;
 
-    // Adicionar nova linha na tabela
-    const table = document.querySelector(".activities-list table tbody");
-    const newRow = table.insertRow();
+    const newActivity = {
+        type: type, 
+        date: date, 
+        time: time, 
+        location: location, 
+        peopleNeeded: peopleNeeded    
+    };  
 
-    newRow.innerHTML = `
-        <td>${type}</td>
-        <td>${date}</td>
-        <td>${time}</td>
-        <td>${location}</td>
-        <td>${peopleNeeded}</td>
-        <td>
-        <button class="contact-btn">Contact People</button>
-        <button class="delete-btn">Delete</button>
-        </td>
-    `;
-
-    // Adicionar funcionalidade ao botão delete
-    const deleteButton = newRow.querySelector(".delete-btn");
-    deleteButton.addEventListener("click", function () {
-        if (confirm("Are you sure you want to delete this activity?")) {
-            newRow.remove();
-        }
-    });
-
+    createActivity(newActivity);
     // Fechar modal e limpar formulário
     activityFormModal.style.display = "none";
     newActivityForm.reset();
